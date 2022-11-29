@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class OrderForm  {
+public class OrderForm {
 
     private static final int DURATION = 3;
 
@@ -19,44 +19,46 @@ public class OrderForm  {
         driver = webDriver;
     }
 
-
     // данные клиента
     private final By name = By.xpath(".//input[@placeholder='* Имя']");
     private final By surname = By.xpath(".//input[@placeholder='* Фамилия']");
     private final By address = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
     private final By metroStation = By.xpath(".//input[@placeholder='* Станция метро']");
     private final By phone = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
-
     // данные аренды
     private final By date = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
     private final By rentPeriod = By.className("Dropdown-placeholder");
-    private final By colorTick  = By.xpath(".//input[@class='Checkbox_Input__14A2w']");
+    private final By colorTick = By.xpath(".//input[@class='Checkbox_Input__14A2w']");
     private final By comment = By.xpath(".//input[@placeholder='Комментарий для курьера']");
     // кнопки флоу заказа
     private final By nextButton = By.xpath(".//button[text() = 'Далее']");
     private final By orderButton = By.xpath(".//div[@class = 'Order_Buttons__1xGrp']/button[text() = 'Заказать']");
     private final By confirmButton = By.xpath(".//div[@class = 'Order_Buttons__1xGrp']/button[text() = 'Да']");
     private final By orderConfirmationMessage = By.xpath(".//div[@class = 'Order_Modal__YZ-d3']/div[@class = 'Order_ModalHeader__3FDaJ']");
-    public void waitForLoadNextButton(){
+
+    public void waitForLoadNextButton() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(nextButton));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(nextButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(nextButton));
     }
 
-    public void waitForLoadOrderButton(){
+    public void waitForLoadOrderButton() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(orderButton));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(orderButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(orderButton));
     }
-    public void waitForLoadConfirmButton(){
+
+    public void waitForLoadConfirmButton() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(confirmButton));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(confirmButton));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(confirmButton));
     }
-    public void waitForLoadConfirmationMessage(){
+
+    public void waitForLoadConfirmationMessage() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(orderConfirmationMessage));
     }
+
     public void setName(String clientName) {
         driver.findElement(name).sendKeys(clientName);
     }
@@ -102,24 +104,26 @@ public class OrderForm  {
         driver.findElement(comment).sendKeys(orderComment);
     }
 
-    public void clickNextButton(){
+    public void clickNextButton() {
         driver.findElement(nextButton).click();
     }
-    public void clickOrderButton(){
+
+    public void clickOrderButton() {
         driver.findElement(orderButton).click();
     }
-    public void clickConfirmButton(){
+
+    public void clickConfirmButton() {
         driver.findElement(confirmButton).click();
     }
 
-    public String getOrderConfirmationMessage(){
+    public String getOrderConfirmationMessage() {
 
         return driver.findElement(orderConfirmationMessage).getText();
     }
 
     public void fillUserDetailsForm(String clientName, String clientSurname,
                                     String clientAddress, String clientMetroStation,
-                                    String clientPhone){
+                                    String clientPhone) {
         setName(clientName);
         setSurname(clientSurname);
         setAddress(clientAddress);
@@ -128,7 +132,7 @@ public class OrderForm  {
     }
 
     public void fillRentDetailsForm(String orderDate, String orderRentPeriod,
-                                    String colorTick, String orderComment){
+                                    String colorTick, String orderComment) {
         setDate(orderDate);
         setRentPeriod(orderRentPeriod);
         setColorTick(colorTick);

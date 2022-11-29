@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.JavascriptExecutor;
 
-import java.time.Duration;
-
 public class HomePage {
     private static final int DURATION = 3;
     private WebDriver driver;
@@ -34,56 +32,57 @@ public class HomePage {
         driver = webDriver;
     }
 
-    public void waitForLoadOrderButton(){
+    public void waitForLoadOrderButton() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(orderButton));
     }
-    public void clickOrderButton(){
+
+    public void clickOrderButton() {
         driver.findElement(orderButton).click();
     }
 
-    public void waitForLoadFAQ(){
+    public void waitForLoadFAQ() {
         new WebDriverWait(driver, DURATION)
                 .until(ExpectedConditions.visibilityOfElementLocated(faqSection));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(faqSection));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(faqSection));
     }
 
-    public String getRentCostContentText(){
+    public String getRentCostContentText() {
         driver.findElement(rentCost).click();
         return driver.findElement(rentCostContent).getText();
     }
 
-    public String getRentCountContentText(){
+    public String getRentCountContentText() {
         driver.findElement(rentCount).click();
         return driver.findElement(rentCountContent).getText();
     }
 
-    public String getRentTimeContentText(){
+    public String getRentTimeContentText() {
         driver.findElement(rentTime).click();
         return driver.findElement(rentTimeContent).getText();
     }
 
-    public String getRentOrderNowContentText(){
+    public String getRentOrderNowContentText() {
         driver.findElement(rentOrderNow).click();
         return driver.findElement(rentOrderNowContent).getText();
     }
 
-    public String getRentPeriodContentText(){
+    public String getRentPeriodContentText() {
         driver.findElement(rentPeriod).click();
         return driver.findElement(rentPeriodContent).getText();
     }
 
-    public String getRentChargerContentText(){
+    public String getRentChargerContentText() {
         driver.findElement(rentCharger).click();
         return driver.findElement(rentChargerContent).getText();
     }
 
-    public String getRentCancelPossibilityContentText(){
+    public String getRentCancelPossibilityContentText() {
         driver.findElement(rentCancelPossibility).click();
         return driver.findElement(rentCancelPossibilityContent).getText();
     }
 
-    public String getRentDeliveryZoneContentText(){
+    public String getRentDeliveryZoneContentText() {
         driver.findElement(rentDeliveryZone).click();
         return driver.findElement(rentDeliveryZoneContent).getText();
     }

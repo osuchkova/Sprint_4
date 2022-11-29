@@ -8,6 +8,7 @@ import org.junit.After;
 import ru.praktikum.pages.*;
 import ru.praktikum.BrowserEnv;
 import org.hamcrest.MatcherAssert;
+
 import static org.hamcrest.CoreMatchers.containsString;
 
 @RunWith(Parameterized.class)
@@ -25,9 +26,9 @@ public class OrderFlowTestClass {
     private final String comment;
 
     public OrderFlowTestClass(String name, String surname, String address,
-                         String metroStation, String phone,
-                         String date, String rentPeriod,
-                         String colorTick, String comment)  {
+                              String metroStation, String phone,
+                              String date, String rentPeriod,
+                              String colorTick, String comment) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -39,7 +40,7 @@ public class OrderFlowTestClass {
         this.comment = comment;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] getOrderData() {
         return new Object[][]{
                 {"Ольга", "Сучкова", "г. Ростов-на-Дону, ул. Ерёменко 60, кв. 8", "Бульвар Рокоссовского", "+79000000000",
@@ -65,7 +66,7 @@ public class OrderFlowTestClass {
         objOrder.clickOrderButton();
         objOrder.waitForLoadConfirmButton();
         objOrder.clickConfirmButton();
-        objOrder. waitForLoadConfirmationMessage();
+        objOrder.waitForLoadConfirmationMessage();
         String actual = objOrder.getOrderConfirmationMessage();
         String expected = "Заказ оформлен";
         MatcherAssert.assertThat(actual, containsString(expected));

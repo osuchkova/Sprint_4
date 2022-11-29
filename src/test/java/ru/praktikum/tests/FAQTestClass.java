@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import ru.praktikum.pages.HomePage;
 import ru.praktikum.BrowserEnv;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -23,20 +24,20 @@ public class FAQTestClass {
     private final String rentCancelPossibilityContent;
     private final String rentDeliveryZoneContent;
 
-    public FAQTestClass (String rentCostContent, String rentCountContent, String rentTimeContent, String rentOrderNowContent,
-                         String rentPeriodContent, String rentChargerContent, String rentCancelPossibilityContent,
-                         String rentDeliveryZoneContent) {
-        this.rentCostContent=rentCostContent;
-        this.rentCountContent=rentCountContent;
-        this.rentTimeContent=rentTimeContent;
-        this.rentOrderNowContent=rentOrderNowContent;
-        this.rentPeriodContent=rentPeriodContent;
-        this.rentChargerContent=rentChargerContent;
-        this.rentCancelPossibilityContent=rentCancelPossibilityContent;
-        this.rentDeliveryZoneContent=rentDeliveryZoneContent;
+    public FAQTestClass(String rentCostContent, String rentCountContent, String rentTimeContent, String rentOrderNowContent,
+                        String rentPeriodContent, String rentChargerContent, String rentCancelPossibilityContent,
+                        String rentDeliveryZoneContent) {
+        this.rentCostContent = rentCostContent;
+        this.rentCountContent = rentCountContent;
+        this.rentTimeContent = rentTimeContent;
+        this.rentOrderNowContent = rentOrderNowContent;
+        this.rentPeriodContent = rentPeriodContent;
+        this.rentChargerContent = rentChargerContent;
+        this.rentCancelPossibilityContent = rentCancelPossibilityContent;
+        this.rentDeliveryZoneContent = rentDeliveryZoneContent;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: {0} {1}")
     public static Object[][] getCntentData() {
         return new Object[][]{
                 {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
@@ -62,7 +63,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentCostContentText();
-        assertEquals("Текст не совпадает", actual, rentCostContent);
+        assertEquals("Текст не совпадает", rentCostContent, actual);
     }
 
     @Test
@@ -72,9 +73,8 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentCountContentText();
-        assertEquals("Текст не совпадает", actual, rentCountContent);
+        assertEquals("Текст не совпадает", rentCountContent, actual);
     }
-
 
     @Test
     public void checkRentTimeText() {
@@ -83,7 +83,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentTimeContentText();
-        assertEquals("Текст не совпадает", actual, rentTimeContent);
+        assertEquals("Текст не совпадает", rentTimeContent, actual);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentOrderNowContentText();
-        assertEquals("Текст не совпадает", actual, rentOrderNowContent);
+        assertEquals("Текст не совпадает", rentOrderNowContent, actual);
     }
 
     @Test
@@ -103,7 +103,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentPeriodContentText();
-        assertEquals("Текст не совпадает", actual, rentPeriodContent);
+        assertEquals("Текст не совпадает", rentPeriodContent, actual);
     }
 
     @Test
@@ -113,7 +113,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentChargerContentText();
-        assertEquals("Текст не совпадает", actual, rentChargerContent);
+        assertEquals("Текст не совпадает", rentChargerContent, actual);
     }
 
     @Test
@@ -123,7 +123,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentCancelPossibilityContentText();
-        assertEquals("Текст не совпадает", actual, rentCancelPossibilityContent);
+        assertEquals("Текст не совпадает", rentCancelPossibilityContent, actual);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class FAQTestClass {
         HomePage objHomePage = new HomePage(driver);
         objHomePage.waitForLoadFAQ();
         String actual = objHomePage.getRentDeliveryZoneContentText();
-        assertEquals("Текст не совпадает", actual, rentDeliveryZoneContent);
+        assertEquals("Текст не совпадает", rentDeliveryZoneContent, actual);
     }
 
     @After
